@@ -1,6 +1,5 @@
 {
   "name": "tatterns",
-  "source": "index.js",
   "scripts": {
     "start": "wmr",
     "build": "wmr build",
