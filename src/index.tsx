@@ -245,8 +245,14 @@ function FullScreenPattern({ reset }: { reset: Function }) {
   try {
     const props = decode(String(t));
 
+    const { clientHeight, clientWidth } = document.body;
+    const rows = Math.floor(clientHeight / maxSize);
+    const cols = Math.floor(clientWidth / maxSize);
+    const sizeRatio = maxDiameter / props.diameter;
+    const expandedScale = Math.min(sizeRatio * rows, sizeRatio * cols);
+
     return (
-      <FixedCenter color={props.color}>
+      <FixedCenter scale={expandedScale} color={props.color}>
         <Pattern expanded {...props} reset={resetView} />
       </FixedCenter>
     );
